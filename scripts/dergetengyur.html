@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>Tengyur Image Test</title>
+    <script src="showimage.js"></script>
+</head>
+
+<body>
+
+    <input id="volume" name="volume" type="number" min="1" max="212" placeholder="vol." />
+
+    <input id="page" name="page" placeholder="page (i.e. 1a)" />
+
+    <input id="bttn" type="submit" onclick="printimage()">
+
+    <script>
+        var input = document.getElementById("page");
+        input.addEventListener("keyup", function (event) {
+            event.preventDefault();
+            if (event.keyCode === 13) {
+                document.getElementById("bttn").click();
+            }
+        });
+
+        function iToVolNum(i) {
+            i = parseInt(i)+316;
+            if (i > 518) {
+                i = i+2;
+            }
+            return i;
+
+        }
+
+        function getPageInfo(pageStr) {
+            var letter = 'a';
+            var indexLetter = pageStr.indexOf('a');
+            if (indexLetter == -1) {
+                indexLetter = pageStr.indexOf('b');
+                letter = 'b';
+            }
+            if (indexLetter == -1)
+                return null;
+            var numbers = pageStr.substring(0, indexLetter);
+            var imageNum = 2 * parseInt(numbers) + 1;
+            if (letter == 'b')
+                imageNum += 1;
+            return imageNum;
+        }
+
+        function pad(n, width, z) {
+            z = z || '0';
+            n = n + '';
+            return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+        }
+
+        function getVolInfo(volStr) {
+            volId23 = 'bdr:V23703_I1'.concat(iToVolNum(volStr));
+            return [volId23];
+        }
+
+        function getImageName(volume, imageNum) {
+            res = [];
+            var volInt = parseInt(volume);
+            var paddedImageNum = pad('' + imageNum, 4, '0');
+            var volNum = iToVolNum(volInt);
+            res[0] = '1' + volNum + paddedImageNum + '.tif';
+            return res;
+        }
+
+        function getS3ImageURL(volume, imageNum) {
+            var s3vol = pad(volume, 3, '0');
+            imageNum = imageNum -2; // no tbrc pages in the s3 images
+            var paddedImageNum = pad('' + imageNum, 4, '0');
+            return "https://s3.amazonaws.com/dtengyur/images/"+s3vol+"/"+paddedImageNum+".jpg"
+        }
+
+        function printimage() {
+            var volume = document.getElementById('volume').value;
+            var page = document.getElementById('page').value;
+            var imageNum = getPageInfo(page);
+            if (imageNum == null) {
+                return;
+            }
+            var volIds = getVolInfo(volume);
+            var imageNames = getImageName(volume, imageNum);
+            for (var i = 0; i < volIds.length; i++) {
+                var imageUrl = 'http://iiif.bdrc.io/' + volIds[i] + '::' + imageNames[i] + '/full/full/0/default.jpg';
+                document.getElementById('theimage' + (i + 1)).src = imageUrl;
+            }
+            document.getElementById('theimage2').src = getS3ImageURL(volume, imageNum);
+        }
+    </script>
+
+    <!-- <img id="theimage1"; style='height: 100%; width: 100%; object-fit: contain'/> -->
+    <!-- <img id="theimage2"; style='height: 100%; width: 100%; object-fit: contain'/> -->
+    
+    <img id="theimage1"/>
+    <img id="theimage2"/>
+    <br><br>
+    <table border=0 width=1400>
+        <tbody>
+            <tr><td>བསྟོད་ཚོགས། ཀ།: 1</td><td>རྒྱུད་འགྲེལ། བ།: 16</td><td>རྒྱུད་འགྲེལ། ཨ།: 31</td><td>རྒྱུད་འགྲེལ། བི།: 46</td><td>རྒྱུད་འགྲེལ། ཨི།: 61</td><td>རྒྱུད་འགྲེལ། བུ།: 76</td><td>ཤེར་ཕྱིན། ན།: 91</td><td>དབུ་མ། ཤ།: 106</td><td>མདོ་སྡེ། ནི།: 121</td><td>སེམས་ཙམ། ཤི།: 136</td><td>འདུལ་བ། ནུ།: 151</td><td>འདུལ་བ། ཤུ།: 166</td><td>ཚད་མ། ནེ།: 181</td><td>སྒྲ་མདོ། ཤེ།: 196</td><td>སྣ་ཚོགས། ནོ།: 211</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཀ།: 2</td><td>རྒྱུད་འགྲེལ། མ།: 17</td><td>རྒྱུད་འགྲེལ། ཀི།: 32</td><td>རྒྱུད་འགྲེལ། མི།: 47</td><td>རྒྱུད་འགྲེལ། ཀུ།: 62</td><td>རྒྱུད་འགྲེལ། མུ།: 77</td><td>ཤེར་ཕྱིན། པ།: 92</td><td>དབུ་མ། ས།: 107</td><td>མདོ་སྡེ། པི།: 122</td><td>སེམས་ཙམ། སི།: 137</td><td>འདུལ་བ། པུ།: 152</td><td>འདུལ་བ། སུ།: 167</td><td>ཚད་མ། པེ།: 182</td><td>སྒྲ་མདོ། སེ།: 197</td><td>སྣ་ཚོགས། པོ།: 212</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཁ།: 3</td><td>རྒྱུད་འགྲེལ། ཙ།: 18</td><td>རྒྱུད་འགྲེལ། ཁི།: 33</td><td>རྒྱུད་འགྲེལ། ཙི།: 48</td><td>རྒྱུད་འགྲེལ། ཁུ།: 63</td><td>རྒྱུད་འགྲེལ། ཙུ།: 78</td><td>ཤེར་ཕྱིན། ཕ།: 93</td><td>དབུ་མ། ཧ།: 108</td><td>སེམས་ཙམ། ཕི།: 123</td><td>སེམས་ཙམ། ཧི།: 138</td><td>འདུལ་བ། ཕུ།: 153</td><td>སྐྱེས་རབས། ཧུ།: 168</td><td>ཚད་མ། ཕེ།: 183</td><td>གསོ་རིག ཧེ།: 198</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ག།: 4</td><td>རྒྱུད་འགྲེལ། ཚ།: 19</td><td>རྒྱུད་འགྲེལ། གི།: 34</td><td>རྒྱུད་འགྲེལ། ཚི།: 49</td><td>རྒྱུད་འགྲེལ། གུ།: 64</td><td>རྒྱུད་འགྲེལ། ཚུ།: 79</td><td>ཤེར་ཕྱིན། བ།: 94</td><td>དབུ་མ། ཨ།: 109</td><td>སེམས་ཙམ། བི།: 124</td><td>མངོན་པ། ཨི།: 139</td><td>འདུལ་བ། བུ།: 154</td><td>སྐྱེས་རབས། ཨུ།: 169</td><td>ཚད་མ། བེ།: 184</td><td>གསོ་རིག ཨེ།: 199</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ང།: 5</td><td>རྒྱུད་འགྲེལ། ཛ།: 20</td><td>རྒྱུད་འགྲེལ། ངི།: 35</td><td>རྒྱུད་འགྲེལ། ཛི།: 50</td><td>རྒྱུད་འགྲེལ། ངུ།: 65</td><td>ཤེར་ཕྱིན། ཀ།: 80</td><td>ཤེར་ཕྱིན། མ།: 95</td><td>དབུ་མ། ཀི།: 110</td><td>སེམས་ཙམ། མི།: 125</td><td>མངོན་པ། ཀུ།: 140</td><td>འདུལ་བ། མུ།: 155</td><td>འཁྲི་ཤིང། ཀེ།: 170</td><td>ཚད་མ། མེ།: 185</td><td>གསོ་རིག ཀོ།: 200</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཅ།: 6</td><td>རྒྱུད་འགྲེལ། ཝ།: 21</td><td>རྒྱུད་འགྲེལ། ཅི།: 36</td><td>རྒྱུད་འགྲེལ། ཝི།: 51</td><td>རྒྱུད་འགྲེལ། ཅུ།: 66</td><td>ཤེར་ཕྱིན། ཁ།: 81</td><td>དབུ་མ། ཙ།: 96</td><td>དབུ་མ། ཁི།: 111</td><td>སེམས་ཙམ། ཙི།: 126</td><td>མངོན་པ། ཁུ།: 141</td><td>འདུལ་བ། ཙུ།: 156</td><td>འཁྲི་ཤིང། ཁེ།: 171</td><td>ཚད་མ། ཙེ།: 186</td><td>གསོ་རིག ཁོ།: 201</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཆ།: 7</td><td>རྒྱུད་འགྲེལ། ཞ།: 22</td><td>རྒྱུད་འགྲེལ། ཆི།: 37</td><td>རྒྱུད་འགྲེལ། ཞི།: 52</td><td>རྒྱུད་འགྲེལ། ཆུ།: 67</td><td>ཤེར་ཕྱིན། ག།: 82</td><td>དབུ་མ། ཚ།: 97</td><td>དབུ་མ། གི།: 112</td><td>སེམས་ཙམ། ཚི།: 127</td><td>མངོན་པ། གུ།: 142</td><td>འདུལ་བ། ཚུ།: 157</td><td>སྐྱེས་རབས། གེ།: 172</td><td>ཚད་མ། ཚེ།: 187</td><td>གསོ་རིག གོ།: 202</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཇ།: 8</td><td>རྒྱུད་འགྲེལ། ཟ།: 23</td><td>རྒྱུད་འགྲེལ། ཇི།: 38</td><td>རྒྱུད་འགྲེལ། ཟི།: 53</td><td>རྒྱུད་འགྲེལ། ཇུ།: 68</td><td>ཤེར་ཕྱིན། ང།: 83</td><td>དབུ་མ། ཛ།: 98</td><td>མདོ་སྡེ། ངི།: 113</td><td>སེམས་ཙམ། ཛི།: 128</td><td>མངོན་པ། ངུ།: 143</td><td>འདུལ་བ། ཛུ།: 158</td><td>སྤྲིང་ཡིག ངེ།: 173</td><td>ཚད་མ། ཛེ།: 188</td><td>སྣ་ཚོགས། ངོ།: 203</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཉ།: 9</td><td>རྒྱུད་འགྲེལ། འ།: 24</td><td>རྒྱུད་འགྲེལ། ཉི།: 39</td><td>རྒྱུད་འགྲེལ། འི།: 54</td><td>རྒྱུད་འགྲེལ། ཉུ།: 69</td><td>ཤེར་ཕྱིན། ཅ།: 84</td><td>དབུ་མ། ཝ།: 99</td><td>མདོ་སྡེ། ཅི།: 114</td><td>སེམས་ཙམ། ཝི།: 129</td><td>མངོན་པ། ཅུ།: 144</td><td>འདུལ་བ། ཝུ།: 159</td><td>ཚད་མ། ཅེ།: 174</td><td>ཚད་མ། ཝེ།: 189</td><td>སྣ་ཚོགས། ཅོ།: 204</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཏ།: 10</td><td>རྒྱུད་འགྲེལ། ཡ།: 25</td><td>རྒྱུད་འགྲེལ། ཏི།: 40</td><td>རྒྱུད་འགྲེལ། ཡི།: 55</td><td>རྒྱུད་འགྲེལ། ཏུ།: 70</td><td>ཤེར་ཕྱིན། ཆ།: 85</td><td>དབུ་མ། ཞ།: 100</td><td>མདོ་སྡེ། ཆི།: 115</td><td>སེམས་ཙམ། ཞི།: 130</td><td>མངོན་པ། ཆུ།: 145</td><td>འདུལ་བ། ཞུ།: 160</td><td>ཚད་མ། ཆེ།: 175</td><td>ཚད་མ། ཞེ།: 190</td><td>སྣ་ཚོགས། ཆོ།: 205</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཐ།: 11</td><td>རྒྱུད་འགྲེལ། ར།: 26</td><td>རྒྱུད་འགྲེལ། ཐི།: 41</td><td>རྒྱུད་འགྲེལ། རི།: 56</td><td>རྒྱུད་འགྲེལ། ཐུ།: 71</td><td>ཤེར་ཕྱིན། ཇ།: 86</td><td>དབུ་མ། ཟ།: 101</td><td>མདོ་སྡེ། ཇི།: 116</td><td>སེམས་ཙམ། ཟི།: 131</td><td>མངོན་པ། ཇུ།: 146</td><td>འདུལ་བ། ཟུ།: 161</td><td>ཚད་མ། ཇེ།: 176</td><td>ཚད་མ། ཟེ།: 191</td><td>སྣ་ཚོགས། ཇོ།: 206</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ད།: 12</td><td>རྒྱུད་འགྲེལ། ལ།: 27</td><td>རྒྱུད་འགྲེལ། དི།: 42</td><td>རྒྱུད་འགྲེལ། ལི།: 57</td><td>རྒྱུད་འགྲེལ། དུ།: 72</td><td>ཤེར་ཕྱིན། ཉ།: 87</td><td>དབུ་མ། འ།: 102</td><td>མདོ་སྡེ། ཉི།: 117</td><td>སེམས་ཙམ། འི།: 132</td><td>མངོན་པ། ཉུ།: 147</td><td>འདུལ་བ། འུ།: 162</td><td>ཚད་མ། ཉེ།: 177</td><td>ཚད་མ། འེ།: 192</td><td>སྣ་ཚོགས། ཉོ།: 207</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ན།: 13</td><td>རྒྱུད་འགྲེལ། ཤ།: 28</td><td>རྒྱུད་འགྲེལ། ནི།: 43</td><td>རྒྱུད་འགྲེལ། ཤི།: 58</td><td>རྒྱུད་འགྲེལ། ནུ།: 73</td><td>ཤེར་ཕྱིན། ཏ།: 88</td><td>དབུ་མ། ཡ།: 103</td><td>མདོ་སྡེ། ཏི།: 118</td><td>སེམས་ཙམ། ཡི།: 133</td><td>མངོན་པ། ཏུ།: 148</td><td>འདུལ་བ། ཡུ།: 163</td><td>ཚད་མ། ཏེ།: 178</td><td>ཚད་མ། ཡེ།: 193</td><td>སྒྲ་མདོ། ཏོ།: 208</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། པ།: 14</td><td>རྒྱུད་འགྲེལ། ས།: 29</td><td>རྒྱུད་འགྲེལ། པི།: 44</td><td>རྒྱུད་འགྲེལ། སི།: 59</td><td>རྒྱུད་འགྲེལ། པུ།: 74</td><td>ཤེར་ཕྱིན། ཐ།: 89</td><td>དབུ་མ། ར།: 104</td><td>མདོ་སྡེ། ཐི།: 119</td><td>སེམས་ཙམ། རི།: 134</td><td>མངོན་པ། ཐུ།: 149</td><td>འདུལ་བ། རུ།: 164</td><td>ཚད་མ། ཐེ།: 179</td><td>སྒྲ་མདོ། རེ།: 194</td><td>སྣ་ཚོགས། ཐོ།: 209</td></tr>
+            <tr><td>རྒྱུད་འགྲེལ། ཕ།: 15</td><td>རྒྱུད་འགྲེལ། ཧ།: 30</td><td>རྒྱུད་འགྲེལ། ཕི།: 45</td><td>རྒྱུད་འགྲེལ། ཧི།: 60</td><td>རྒྱུད་འགྲེལ། ཕུ།: 75</td><td>ཤེར་ཕྱིན། ད།: 90</td><td>དབུ་མ། ལ།: 105</td><td>མདོ་སྡེ། དི།: 120</td><td>སེམས་ཙམ། ལི།: 135</td><td>འདུལ་བ། དུ།: 150</td><td>འདུལ་བ། ལུ།: 165</td><td>ཚད་མ། དེ།: 180</td><td>སྒྲ་མདོ། ལེ།: 195</td><td>སྣ་ཚོགས། དོ།: 210</td></tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
