@@ -4,8 +4,7 @@ Working repository for the digital Derge Tengyur prepared by Esukhia and Barom T
 
 ## Downloads
 
-Download a zip with the version 0.1:
-- [full volumes in .txt files](https://github.com/Esukhia/derge-tengyur/releases/download/0.1/derge-tengyur-vol-0.1.zip)
+- [Full volumes in plain text format](https://github.com/Esukhia/derge-tengyur/releases/download/0.1/derge-tengyur-vol-0.1.zip)
 
 
 ## Format
