@@ -12,9 +12,9 @@ inDir = '../text/'
 
 releases = 'releases/'
 if not os.path.exists(releases):
-    os.makedirs(outDir)
+    os.makedirs(releases)
 
-outDir = 'releases/kjtsv/'
+outDir = 'releases/kjtsv'
 if not os.path.exists(outDir):
     os.makedirs(outDir)
 shutil.rmtree(outDir, ignore_errors=True)
@@ -27,7 +27,7 @@ baseURL = 'https://s3.amazonaws.com/dtengyur/images/{volume}/{page}.jpg'
 texts = os.listdir(inDir)
 
 def writeTsv(data):
-    with open(f'{outDir}{t[:-3]}tsv', 'wt', encoding='utf-16') as out_file:
+    with open(os.path.join(outDir, f'{t[:-3]}tsv'), 'wt', encoding='utf-16') as out_file:
         tsv_writer = csv.writer(out_file, delimiter='\t')
         for line in data:
             tsv_writer.writerow(line)
@@ -50,6 +50,7 @@ def formatData(lines, textName):
             tsvContent.append(row)
         # if content
         elif bool(re.search('\d\]', line)):
+            line = line.strip()
             row = ['', line]
             tsvContent.append(row)
         else:
