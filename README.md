@@ -4,7 +4,8 @@ Working repository for the digital Derge Tengyur prepared by Esukhia and Barom T
 
 ## Downloads
 
-- [Full volumes in plain text format](https://github.com/Esukhia/derge-tengyur/releases/download/0.1/derge-tengyur-vol-0.1.zip)
+- [Volumes, plain text format, version 2019-05](https://github.com/Esukhia/derge-tengyur/releases/download/1905/deten_vol_txt_v1905.zip)
+- [Volumes, Kumara-jiva tsv format, version 2019-05](https://github.com/Esukhia/derge-tengyur/releases/download/1905/deten_vol_kjtsv_v1905.zip)
 
 
 ## Format
@@ -22,8 +23,8 @@ They also contain a few error suggestions noted as example. It is far from an ex
 
 * **[X]** signals obvious errors or highly suspicious spellings (ex: `མཎྜལ་ཐིག་[ལ་]ལྔ་པ་ལ།`), or un-transcribable characters
 * **#** signals an unreadable graphical unit
-* **{TX}** signals the beginning of the text with Tohoku catalog number **X**. We use the following conventions:
-  * when a text is missing from the Tohoku catalog, we indicate it with the preceding number followed by **a**, ex: **T7**, **T7a**, **T8**, following the [rKTs](https://www.istb.univie.ac.at/kanjur/rktsneu/sub/index.php) convention.
+* **{DX}** signals the beginning of the text with Tohoku catalog number **X**. We use the following conventions:
+  * when a text is missing from the Tohoku catalog, we indicate it with the preceding number followed by **a**, ex: **D7**, **D7a**, **D8**, following the [rKTs](https://www.istb.univie.ac.at/kanjur/rktsneu/sub/index.php) convention.
 
 TODO: format of notes insertion.
 
