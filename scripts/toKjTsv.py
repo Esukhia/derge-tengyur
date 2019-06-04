@@ -63,14 +63,17 @@ def getData(text):
     with open(tPath, 'r', encoding='utf-8') as f:
         lines = f.readlines()
     return lines
-
-
-for t in texts:
-    lines = getData(t)
-    data = formatData(lines, t)
-    writeTsv(data)
-
-versionTag = str(datetime.date.today())[2:-3].replace('-', '')
-shutil.make_archive(f'releases/deten_vol_kjtsv_v{versionTag}', 'zip', outDir)
-
     
+if __name__ == '__main__':
+
+    for t in texts:
+        print(f'converting {t}')
+        lines = getData(t)
+        data = formatData(lines, t)
+        writeTsv(data)
+
+    versionTag = str(datetime.date.today())[2:-3].replace('-', '')
+    print('Zipping up the release')
+    shutil.make_archive(f'releases/deten_vol_kjtsv_v{versionTag}', 'zip', outDir)
+    shutil.rmtree(outDir, ignore_errors=True)
+    print('Done!')
