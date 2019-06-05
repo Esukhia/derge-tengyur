@@ -1,7 +1,7 @@
 <p align="center">
   <span>English</span> |
   <a href="https://github.com/Esukhia/derge-tengyur/blob/master/README.bo.md">བོད་ཡིག</a> |
-  <a href="https://github.com/Esukhia/derge-tengyur/blob/master/README.zh-tw.md">正體中文</a>
+  <a href="https://github.com/Esukhia/derge-tengyur/blob/master/README.zh-tw.md">繁體中文</a>
 </p>
 
 # Digital Derge Tengyur
