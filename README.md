@@ -90,7 +90,7 @@ The files are on Github hoping they'll improve, don't hesitate to [report issues
 
 Use the following statemnent:
     
-     ཆོས་ཀྱི་འབྱུང་གནས། [1721–31], བཀའ་འགྱུར་སྡེ་དགེ་པར་མ།, Etexts from ACIP and BDRC OCR, combined and further proofread by Esukhia, 2015-2018, https://github.com/Esukhia/derge-tengyur
+     ཚུལ་ཁྲིམས་རིན་ཆེན། [1697-1774], བཀའ་འགྱུར་སྡེ་དགེ་པར་མ།, various etexts combined and further proofread by Esukhia on behalf of Barom Theksum Choling, 2014-2018, https://github.com/Esukhia/derge-tengyur
 
 # License
 
