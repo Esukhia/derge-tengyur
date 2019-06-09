@@ -21,7 +21,8 @@ shutil.rmtree(outDir, ignore_errors=True)
 os.mkdir(outDir)
 
 
-header = ['序號', '藏文文本Text', '中文翻譯Translation']
+# header = ['序號', '藏文文本Text', '中文翻譯Translation']
+header = ['序號', '藏文文本Text']
 baseURL = 'https://s3.amazonaws.com/dtengyur/images/{volume}/{page}.jpg'
 
 texts = os.listdir(inDir)
