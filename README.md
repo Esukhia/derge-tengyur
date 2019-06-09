@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://github.com/Esukhia/derge-tengyur/blob/master/README.bo.md">བོད་ཡིག</a> |
+  <span>English</span> |
+  <a href="https://github.com/Esukhia/derge-tengyur/blob/master/README.zh-cn.md">简体中文</a> |
+  <a href="https://github.com/Esukhia/derge-tengyur/blob/master/README.zh-tw.md">繁體中文</a>
+</p>
+
 # Digital Derge Tengyur
 
 Working repository for the digital Derge Tengyur prepared by Esukhia and Barom Theksum Choling. This repository aims at being an annotated faithful copy of the Derge edition of the Tengyur. Each file of the `derge-tengyur-tags` directory is the input of a volume of the Derge Tengyur, with page and line indication. See the [catalog by the Tohoku University](https://www.tbrc.org/#!rid=W1PD95677) to find a specific text. The indexes indicated in this catalog are also indicated in the files.
@@ -90,7 +97,7 @@ The files are on Github hoping they'll improve, don't hesitate to [report issues
 
 Use the following statemnent:
     
-     ཆོས་ཀྱི་འབྱུང་གནས། [1721–31], བཀའ་འགྱུར་སྡེ་དགེ་པར་མ།, Etexts from ACIP and BDRC OCR, combined and further proofread by Esukhia, 2015-2018, https://github.com/Esukhia/derge-tengyur
+     ཚུལ་ཁྲིམས་རིན་ཆེན། [1697-1774],  བསྟན་འགྱུར་སྡེ་དགེ་པར་མ།, various etexts combined and further proofread by Esukhia on behalf of Barom Theksum Choling, 2014-2018, https://github.com/Esukhia/derge-tengyur
 
 # License
 
