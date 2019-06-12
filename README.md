@@ -80,6 +80,7 @@ Each time an issue is found, our team checks the XXX scans and sometimes falls b
 
 Interesting differences appear on:
 - vol. 4, page 55a6 (wasurs on རི་དྭགས)
+- vol. 4, page 55b4 (སོ་ཞེས / སོགས)
 
 
 ## Export works
