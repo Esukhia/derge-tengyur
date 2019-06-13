@@ -74,6 +74,15 @@ We keep the original punctuation in parenthesis (see above) but normalize the fo
 These page numbering issues appear in the original scans and have been kept:
 - vol. 209 goes from page 87 to page 89, and from page 89 to page 91
 
+## Image Sources
+
+Each time an issue is found, our team checks the XXX scans and sometimes falls back on the [edition printed by the 16th Karmapa](https://www.tbrc.org/#!rid=W23703) in case of missing pages or unreadable passages. The Karmapa edition isn't used as a main source because it was retouched with marker pens before printing in Delhi.
+
+Interesting differences appear on:
+- vol. 4, page 55a6 (wasurs on རི་དྭགས)
+- vol. 4, page 55b4 (སོ་ཞེས / སོགས)
+
+
 ## Export works
 
 In order to export each work in a different file, run:
@@ -97,8 +106,8 @@ The files are on Github hoping they'll improve, don't hesitate to [report issues
 
 Use the following statemnent:
     
-     ཚུལ་ཁྲིམས་རིན་ཆེན། [1697-1774],  བསྟན་འགྱུར་སྡེ་དགེ་པར་མ།, various etexts combined and further proofread by Esukhia on behalf of Barom Theksum Choling, 2014-2018, https://github.com/Esukhia/derge-tengyur
+     ཚུལ་ཁྲིམས་རིན་ཆེན། [1697-1774],  བསྟན་འགྱུར་སྡེ་དགེ་པར་མ།, various etexts combined and further proofread by Esukhia on behalf of Barom Theksum Choling, 2014-2019, https://github.com/Esukhia/derge-tengyur
 
 # License
 
-This work is a mechanical reproduction of a Public Domain work, and as such is also in the Public Domain.
+This work is a mechanical reproduction of a Public domain work, and as such is also in the Public domain.
