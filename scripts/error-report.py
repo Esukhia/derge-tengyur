@@ -315,14 +315,14 @@ if __name__ == '__main__':
             "sanskrit": False
         }
     }
-    for infilename in sorted(glob.glob("../derge-tengyur-tags/*.txt")):
+    for infilename in sorted(glob.glob("../text/*.txt")):
         #print(infilename)
-        volnum = infilename[22:25]
-        shortfilename = infilename[22:-4]
+        volnum = infilename[3:6]
+        shortfilename = infilename[7:-4]
         try:
             volnum = int(volnum)
         except ValueError:
-            print('wrong file format: '+shortfilename+'.txt')
+            print('wrong file format: '+volnum+'.txt')
             continue
         parse_one_file(infilename, state, volnum, options, shortfilename)
 

@@ -112,7 +112,6 @@ def parse_one_line(line, filelinenum, state, outf, volnum, options):
         text = text.replace('&', '')
         text = text.replace('#', '')
         if '{D' in text:
-            closeidx = text.find('}')
             text = re.sub(r"\{D([^}]+)\}", lambda m: tohrepl(m), text)
         if 'keep_errors_indications' not in options or not options['keep_errors_indications']:
             text = text.replace('[', '').replace(']', '')
@@ -151,8 +150,6 @@ if __name__ == '__main__':
         volnum = int(fname[:3])
         volnumfilemapping[volnum] = fname
     for volnum in range(1, 213):
-        if volnum in [73, 211, 208, 171, 170]:
-            continue
         volnumstr = '{0:03d}'.format(volnum)
         if volnum not in volnumfilemapping:
             print("no file found for volume "+str(volnum))
