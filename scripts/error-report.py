@@ -316,9 +316,9 @@ if __name__ == '__main__':
         }
     }
     for infilename in sorted(glob.glob("../text/*.txt")):
-        #print(infilename)
-        volnum = infilename[3:6]
-        shortfilename = infilename[7:-4]
+        print(infilename)
+        volnum = infilename[8:11]
+        shortfilename = infilename[8:-4]
         try:
             volnum = int(volnum)
         except ValueError:
