@@ -79,6 +79,7 @@ These page numbering issues appear in the original scans and have been kept:
 Each time an issue is found, our team checks the XXX scans and sometimes falls back on the [edition printed by the 16th Karmapa](https://www.tbrc.org/#!rid=W23703) in case of missing pages or unreadable passages. The Karmapa edition isn't used as a main source because it was retouched with marker pens before printing in Delhi.
 
 Interesting differences appear on:
+- vol. 1, page 81a2 (first syllable)
 - vol. 4, page 55a6 (wasurs on རི་དྭགས)
 - vol. 4, page 55b4 (སོ་ཞེས / སོགས)
 - vol. 4, page 204b6 (end of line)
