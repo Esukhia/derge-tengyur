@@ -66,8 +66,8 @@ We apply the following normalization without keeping the original in parenthesis
 
 We keep the original punctuation in parenthesis (see above) but normalize the following:
  - `༄༅། །` are added at beginning of texts when they're missing
- - `ག། །།` instead of `ག།། །།`, or with any character conforming `[གཀཤ][ོེིུ]?` instead of ག
- - a tshek is inserted between characters conforming `ང[ོེིུ]?` and `།`
+ - `ག། །།` instead of `ག།། །།`, or with any character conforming `[གཀཤ][\u0F71-\u0F77\u0F7A-\u0F7E\u0F80-\u0F84\u0FB2]*` instead of ག
+ - a tshek is inserted between characters conforming `ང[\u0F71-\u0F75\u0F7A-\u0F7E\u0F80-\u0F84\u0FB2]*`` and `།`
 
 ## Folio swapping in the original
 
