@@ -69,6 +69,10 @@ We keep the original punctuation in parenthesis (see above) but normalize the fo
  - `ག། །།` instead of `ག།། །།`, or with any character conforming `[གཀཤ][ོེིུ]?` instead of ག
  - a tshek is inserted between characters conforming `ང[ོེིུ]?` and `།`
 
+## Folio swapping in the original
+
+Folio 129a/b of vol. 14 is swapped with folio 129a/b of vol. 16 in all the editions of the Derge we were able to consult. We fixed the problem in the input so that it's in a meaningful order. Note that the Peydurma also has the correct order.
+
 ## Page numbering issues
 
 These page numbering issues appear in the original scans and have been kept:
