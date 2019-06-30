@@ -66,8 +66,12 @@ We apply the following normalization without keeping the original in parenthesis
 
 We keep the original punctuation in parenthesis (see above) but normalize the following:
  - `༄༅། །` are added at beginning of texts when they're missing
- - `ག། །།` instead of `ག།། །།`, or with any character conforming `[གཀཤ][ོེིུ]?` instead of ག
- - a tshek is inserted between characters conforming `ང[ོེིུ]?` and `།`
+ - `ག། །།` instead of `ག།། །།`, or with any character conforming `[གཀཤ][\u0F71-\u0F77\u0F7A-\u0F7E\u0F80-\u0F84\u0FB2]*` instead of ག
+ - a tshek is inserted between characters conforming `ང[\u0F71-\u0F75\u0F7A-\u0F7E\u0F80-\u0F84\u0FB2]*`` and `།`
+
+## Folio swapping in the original
+
+Folio 129a/b of vol. 14 is swapped with folio 129a/b of vol. 16 in all the editions of the Derge we were able to consult. We fixed the problem in the input so that it's in a meaningful order. Note that the [Peydurma also has the correct order](https://www.tbrc.org/browser/ImageService?work=W1PD95844&igroup=I1PD95852&image=1165&first=1155&last=1175&fetchimg=yes).
 
 ## Page numbering issues
 
