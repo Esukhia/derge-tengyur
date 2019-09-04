@@ -146,7 +146,7 @@ if __name__ == '__main__':
     #parse_one_file('../derge-kangyur-tags/102-tagged.txt', '/tmp/test.xml', 1, options)
     os.makedirs('./output/', exist_ok=True)
     volnumfilemapping = {}
-    for fname in os.listdir('../derge-tengyur-tags/'):
+    for fname in os.listdir('../text/'):
         volnum = int(fname[:3])
         volnumfilemapping[volnum] = fname
     for volnum in range(1, 213):
@@ -154,7 +154,7 @@ if __name__ == '__main__':
         if volnum not in volnumfilemapping:
             print("no file found for volume "+str(volnum))
             continue
-        infilename = '../derge-tengyur-tags/'+volnumfilemapping[volnum]
+        infilename = '../text/'+volnumfilemapping[volnum]
         print("transforming "+infilename)
         os.makedirs('./output/UT23703-1'+str(volnum+316), exist_ok=True)
         parse_one_file(infilename, './output/UT23703-1'+str(volnum+316)+'/UT23703-1'+str(volnum+316)+'-0000.xml', volnum, options)
