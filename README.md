@@ -73,6 +73,8 @@ We keep the original punctuation in parenthesis (see above) but normalize the fo
 
 Folio 129a/b of vol. 14 is swapped with folio 129a/b of vol. 16 in all the editions of the Derge we were able to consult. We fixed the problem in the input so that it's in a meaningful order. Note that the [Peydurma also has the correct order](https://www.tbrc.org/browser/ImageService?work=W1PD95844&igroup=I1PD95852&image=1165&first=1155&last=1175&fetchimg=yes).
 
+The same phenomenon appears in vols. 44 and 46, folios 10ab, 15ab, 103ab, 139ab and 185ab.
+
 ## Page numbering issues
 
 These page numbering issues appear in the original scans and have been kept:
