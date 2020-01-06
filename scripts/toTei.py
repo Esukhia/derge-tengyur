@@ -26,6 +26,7 @@
 
 import re
 import os
+import time
 
 TEI_BEGINNING = """<?xml version="1.0" encoding="UTF-8"?>
 <tei:TEI xmlns:tei="http://www.tei-c.org/ns/1.0">
@@ -145,6 +146,7 @@ if __name__ == '__main__':
     }
     #parse_one_file('../derge-kangyur-tags/102-tagged.txt', '/tmp/test.xml', 1, options)
     os.makedirs('./output/', exist_ok=True)
+    versionTag = f'UT23703-{time.strftime("%y%m%d")}'
     volnumfilemapping = {}
     for fname in os.listdir('../text/'):
         volnum = int(fname[:3])
@@ -156,5 +158,5 @@ if __name__ == '__main__':
             continue
         infilename = '../text/'+volnumfilemapping[volnum]
         print("transforming "+infilename)
-        os.makedirs('./output/UT23703-1'+str(volnum+316), exist_ok=True)
-        parse_one_file(infilename, './output/UT23703-1'+str(volnum+316)+'/UT23703-1'+str(volnum+316)+'-0000.xml', volnum, options)
+        os.makedirs(f'./output/{versionTag}/UT23703-1'+str(volnum+316), exist_ok=True)
+        parse_one_file(infilename, f'./output/{versionTag}/UT23703-1'+str(volnum+316)+'/UT23703-1'+str(volnum+316)+'-0000.xml', volnum, options)
