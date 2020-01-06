@@ -11,6 +11,7 @@ Working repository for the digital Derge Tengyur prepared by Esukhia and Barom T
 
 ## Downloads
 
+- [UT23703, tei, version 2020-01](https://github.com/Esukhia/derge-tengyur/releases/download/UT23703-200106/UT23703-200106.zip)
 - [Volumes, plain text format, version 2019-05](https://github.com/Esukhia/derge-tengyur/releases/download/1905/deten_vol_txt_v1905.zip)
 - [Volumes, Kumara-jiva tsv format, version 2019-05](https://github.com/Esukhia/derge-tengyur/releases/download/1905/deten_vol_kjtsv_v1905.zip)
 
