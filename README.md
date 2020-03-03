@@ -11,6 +11,7 @@ Working repository for the digital Derge Tengyur prepared by Esukhia and Barom T
 
 ## Downloads
 
+- [UT23703, tei, version 2020-01](https://github.com/Esukhia/derge-tengyur/releases/download/UT23703-200106/UT23703-200106.zip)
 - [Volumes, plain text format, version 2019-05](https://github.com/Esukhia/derge-tengyur/releases/download/1905/deten_vol_txt_v1905.zip)
 - [Volumes, Kumara-jiva tsv format, version 2019-05](https://github.com/Esukhia/derge-tengyur/releases/download/1905/deten_vol_kjtsv_v1905.zip)
 
@@ -29,7 +30,7 @@ They also contain a few error suggestions noted as example. It is far from an ex
 * **(X,Y)** is _(potential error, correction suggestion)_ , example: `མཁའ་ལ་(མི་,མེ་)ཏོག་དམར་པོ་`
 
 * **[X]** signals obvious errors or highly suspicious spellings (ex: `མཎྜལ་ཐིག་[ལ་]ལྔ་པ་ལ།`), or un-transcribable characters
-* **#** signals an unreadable graphical unit
+* **#** mark the peydurma notes re-insertion points
 * **{DX}** signals the beginning of the text with Tohoku catalog number **X**. We use the following conventions:
   * when a text is missing from the Tohoku catalog, we indicate it with the preceding number followed by **a**, ex: **D7**, **D7a**, **D8**, following the [rKTs](https://www.istb.univie.ac.at/kanjur/rktsneu/sub/index.php) convention.
 
@@ -73,6 +74,8 @@ We keep the original punctuation in parenthesis (see above) but normalize the fo
 
 Folio 129a/b of vol. 14 is swapped with folio 129a/b of vol. 16 in all the editions of the Derge we were able to consult. We fixed the problem in the input so that it's in a meaningful order. Note that the [Peydurma also has the correct order](https://www.tbrc.org/browser/ImageService?work=W1PD95844&igroup=I1PD95852&image=1165&first=1155&last=1175&fetchimg=yes).
 
+The same phenomenon appears in vols. 44 and 46, folios 10ab, 15ab, 103ab, 139ab and 185ab.
+
 ## Page numbering issues
 
 These page numbering issues appear in the original scans and have been kept:
@@ -87,7 +90,7 @@ Interesting differences appear on:
 - vol. 4, page 55a6 (wasurs on རི་དྭགས)
 - vol. 4, page 55b4 (སོ་ཞེས / སོགས)
 - vol. 4, page 204b6 (end of line)
-
+- vol. 165, page 49a1 (first syllable)
 
 ## Export works
 
