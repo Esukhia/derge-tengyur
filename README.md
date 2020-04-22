@@ -28,6 +28,7 @@ We follow the page numbers indicated in the original, this means that sometimes 
 They also contain a few error suggestions noted as example. It is far from an exhausted list of the issues found in the original, the staff was actually discouraged to add these.
 
 * **(X,Y)** is _(potential error, correction suggestion)_ , example: `མཁའ་ལ་(མི་,མེ་)ཏོག་དམར་པོ་`
+* **{\<archaic spelling\>,\<modern spelling\>}** 
 
 * **[X]** signals obvious errors or highly suspicious spellings (ex: `མཎྜལ་ཐིག་[ལ་]ལྔ་པ་ལ།`), or un-transcribable characters
 * **#** mark the peydurma notes re-insertion points
