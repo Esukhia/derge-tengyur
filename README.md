@@ -84,7 +84,7 @@ These page numbering issues appear in the original scans and have been kept:
 
 ## Image Sources
 
-Each time an issue is found, our team checks the XXX scans and sometimes falls back on the [edition printed by the 16th Karmapa](https://www.tbrc.org/#!rid=W23703) in case of missing pages or unreadable passages. The Karmapa edition isn't used as a main source because it was retouched with marker pens before printing in Delhi.
+Each time an issue is found, our team checks scans that were made by our team (see [on BDRC](https://www.tbrc.org/#!rid=W2KG209989)) and sometimes falls back on the [edition printed by the 16th Karmapa](https://www.tbrc.org/#!rid=W23703) in case of missing pages or unreadable passages. The Karmapa edition isn't used as a main source because it was retouched with marker pens before printing in Delhi.
 
 Interesting differences appear on:
 - vol. 1, page 81a2 (first syllable)
