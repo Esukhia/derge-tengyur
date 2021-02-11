@@ -151,12 +151,13 @@ if __name__ == '__main__':
     for fname in os.listdir('../text/'):
         volnum = int(fname[:3])
         volnumfilemapping[volnum] = fname
-    for volnum in range(1, 213):
+    for volnum in range(1, 214):
         volnumstr = '{0:03d}'.format(volnum)
         if volnum not in volnumfilemapping:
             print("no file found for volume "+str(volnum))
             continue
         infilename = '../text/'+volnumfilemapping[volnum]
         print("transforming "+infilename)
-        os.makedirs(f'./output/{versionTag}/UT23703-1'+str(volnum+316), exist_ok=True)
-        parse_one_file(infilename, f'./output/{versionTag}/UT23703-1'+str(volnum+316)+'/UT23703-1'+str(volnum+316)+'-0000.xml', volnum, options)
+        igname = '1'+str(volnum+316+(2 if volnum >= 203 else 0))
+        os.makedirs(f'./output/{versionTag}/UT23703-'+igname, exist_ok=True)
+        parse_one_file(infilename, f'./output/{versionTag}/UT23703-'+igname+'/UT23703-1'+str(volnum+316)+'-0000.xml', volnum, options)
