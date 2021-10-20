@@ -27,6 +27,57 @@
 import re
 import os
 import time
+import json
+import hashlib
+
+BVM_REPO_PATH = "../../buda-volume-manifests/"
+IL_CACHE = "il-cache/"
+
+def iglnamefromvolnum(volnum):
+    return "I1"+str(volnum+316+(2 if volnum >= 203 else 0))
+
+def getimglist(volnum):
+    res = {}
+    with open(IL_CACHE+iglnamefromvolnum(volnum)+".json") as json_file:
+        data = json.load(json_file)
+        imgnum = 0
+        for imgobj in data:
+            imgnum += 1
+            res[imgobj["filename"]] = imgnum
+    return res
+
+def getbvm(volnum):
+    iglname = iglnamefromvolnum(volnum)
+    md5 = hashlib.md5(str.encode(iglname))
+    two = md5.hexdigest()[:2]
+    path = BVM_REPO_PATH+two+"/"+iglname+".json"
+    res = {}
+    with open(path) as json_file:
+        data = json.load(json_file)
+        imgnum = 0
+        for imgobj in data["view"]["view1"]["imagelist"]:
+            if "pagination" not in imgobj:
+                continue
+            pagination = imgobj["pagination"]["pgfolios"]["value"]
+            if "filename" not in imgobj:
+                continue
+            filename = imgobj["filename"]
+            imgnum += 1
+            res[pagination] = filename
+    return res
+
+def getimageinfo(pagination, imglist, bvm, debug=False):
+    if pagination not in bvm:
+        return None
+    filename = bvm[pagination]
+    if debug:
+        print(pagination)
+        print(filename)
+    if filename not in imglist:
+        return None
+    if debug:
+        print(imglist[filename])
+    return {"imgnum": imglist[filename], "filename": filename}
 
 TEI_BEGINNING = """<?xml version="1.0" encoding="UTF-8"?>
 <tei:TEI xmlns:tei="http://www.tei-c.org/ns/1.0">
@@ -73,7 +124,7 @@ def tohrepl(match):
     # we don't want xml tags for texts (yet)
     return '' 
 
-def parse_one_line(line, filelinenum, state, outf, volnum, options):
+def parse_one_line(line, filelinenum, state, outf, volnum, options, imglist, bvm):
     if filelinenum == 1:
         return
     if filelinenum == 2:
@@ -104,9 +155,15 @@ def parse_one_line(line, filelinenum, state, outf, volnum, options):
         oldpagestr = state['pagestr']
         if oldpagestr != pagestr:
             newpage = True
+    state['pagestr']= pagestr
     if newpage:
         state['pageseqnum']+= 1
-    state['pagestr']= pagestr
+        state["imginfo"] = getimageinfo(state["pagestr"], imglist, bvm)
+        if state["imginfo"] is not None:
+            if state["pageseqnum"] < state["imginfo"]["imgnum"]:
+                getimageinfo(state["pagestr"], imglist, bvm, True)
+                print("page number error: %s %d != %d %s" % (state["pagestr"], state["pageseqnum"], state["imginfo"]["imgnum"], state["imginfo"]["filename"]))
+            state["pageseqnum"] = state["imginfo"]["imgnum"]
     text = ''
     if len(line) > endpnumi+1:
         text = line[endpnumi+1:]
@@ -126,6 +183,8 @@ def parse_one_line(line, filelinenum, state, outf, volnum, options):
         outf.write('<tei:milestone unit="line" n="'+linenumstr+'"/>'+text)
 
 def parse_one_file(infilename, outfilename, volnum, options):
+    bvm = getbvm(volnum)
+    imglist = getimglist(volnum)
     with open(infilename, 'r', encoding="utf-8") as inf:
         with open(outfilename, 'w', encoding="utf-8") as outf:
             state = {}
@@ -134,7 +193,7 @@ def parse_one_file(infilename, outfilename, volnum, options):
                 if linenum == 1:
                     line = line[1:]# remove BOM
                 # [:-1]to remove final line break
-                parse_one_line(line[:-1], linenum, state, outf, volnum, options)
+                parse_one_line(line[:-1], linenum, state, outf, volnum, options, imglist, bvm)
                 linenum += 1
             outf.write(TEI_END)
 
@@ -158,6 +217,6 @@ if __name__ == '__main__':
             continue
         infilename = '../text/'+volnumfilemapping[volnum]
         print("transforming "+infilename)
-        igname = '1'+str(volnum+316+(2 if volnum >= 203 else 0))
-        os.makedirs(f'./output/{versionTag}/UT23703-'+igname, exist_ok=True)
-        parse_one_file(infilename, f'./output/{versionTag}/UT23703-'+igname+'/UT23703-1'+str(volnum+316)+'-0000.xml', volnum, options)
+        iglname = iglnamefromvolnum(volnum)
+        os.makedirs(f'./output/{versionTag}/UT23703-'+iglname[1:], exist_ok=True)
+        parse_one_file(infilename, f'./output/{versionTag}/UT23703-'+iglname[1:]+'/UT23703-'+iglname[1:]+'-0000.xml', volnum, options)
